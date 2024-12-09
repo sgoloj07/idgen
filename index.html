@@ -89,46 +89,48 @@
                         Generated Card
                     </div>
                     <div id="gencardFB">
-                        <div id="gencardF">
-                            <div class="card-wrapper">
-                                <img src='./images/canvas.png' style='z-index:-1; position: absolute;'>   
-                                <table>
-                                    <tr>
-                                        <td colspan="2"><div class="user-card" id="cardNumberr"></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td><div class="user-card" id="cardName"></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"><div class="user-card" id="cardjobTitle"></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"><div class="user-card" id="cardLocation"></div></td>
-                                    </tr>
-                                </table>
+                        <div class="card-containerses">
+                            <div id="gencardF">
+                                <div class="card-wrapper">
+                                    <img src='./images/canvas.png' style='z-index:-1; position: absolute;'>   
+                                    <table>
+                                        <tr>
+                                            <td colspan="2"><div class="user-card" id="cardNumberr"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td><div class="user-card" id="cardName"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><div class="user-card" id="cardjobTitle"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><div class="user-card" id="cardLocation"></div></td>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
-                        </div>
-                        <div id="gencardB">
-                            <div class="card-wrapper">
-                                <img src='./images/back2.png' style='z-index:-1; position: absolute;'>   
-                                <table>
-                                    <tr>
-                                        <td><div class="user-cards" id="cardSssdsSSnumber"></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td><div class="user-cards" id="cardvalidity"></div></td>
-                                        <td><div class="user-cards" id="cardbirthday"></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"><div class="user-cards" id="cardAddress"></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"><div class="user-cards" id="cardCPIC"></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"><div class="user-cards" id="cardCPICNum"></div></td>
-                                    </tr>
-                                </table>
+                            <div id="gencardB">
+                                <div class="card-wrapper">
+                                    <img src='./images/back2.png' style='z-index:-1; position: absolute;'>   
+                                    <table>
+                                        <tr>
+                                            <td><div class="user-cards" id="cardSssdsSSnumber"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td><div class="user-cards" id="cardvalidity"></div></td>
+                                            <td><div class="user-cards" id="cardbirthday"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><div class="user-cards" id="cardAddress"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><div class="user-cards" id="cardCPIC"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><div class="user-cards" id="cardCPICNum"></div></td>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -155,7 +157,7 @@
         document.getElementById('btnSave2').addEventListener('click', function() {
             html2canvas(document.getElementById('gencardF')).then(function(canvas) {
                 var link = document.createElement('a');
-                link.download = document.getElementById('cardNumberr').innerText + ".png";
+                link.download = document.getElementById('cardNumberr').innerText + "_front.png";
                 link.href = canvas.toDataURL("image/png");
                 link.click();
             });
@@ -169,6 +171,17 @@
                 link.click();
             });
         });
+
+        document.getElementById('btnSave3').addEventListener('click', function() {
+            html2canvas(document.getElementById('gencardFB')).then(function(canvas) {
+                var link = document.createElement('a');
+                link.download = document.getElementById('cardNumberr').innerText + ".png";
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+            });
+        });
+
+        
 
         // Print front
         function advanced1() {
