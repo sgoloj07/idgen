@@ -1,0 +1,31 @@
+/* styles for screen display */
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+h1 {
+  color: #ff0000;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+/* styles for print */
+
+@media print {
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    color: #0000ff;
+  }
+
+  p {
+    margin-bottom: 5px;
+  }
+}
