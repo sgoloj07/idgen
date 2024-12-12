@@ -244,9 +244,9 @@
         }
 
         // Call getUrlParams when the page is loaded
-        window.onload = getUrlParams;
-        if (window.location.pathname === "/idgen/") {
-            window.location.replace(window.location.href + "?");
+        if (!window.location.search.includes("?")) {
+            const newURL = window.location.origin + window.location.pathname + "?";
+            window.location.replace(newURL);
         }
     </script>
 </body>
