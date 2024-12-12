@@ -178,91 +178,31 @@
             });
         });
 
-//front print
-function applyPrintStyles() {
-      var element = document.getElementById('gencardF');
-      element.classList.add('print-styles');
-      return Promise.resolve();
-    }
+        // Print front
+        function advanced1() {
+            html2canvas(document.getElementById('gencardF')).then(function(canvas) {
+                var printWindow = window.open('', '_blank');
+                printWindow.document.write('<img src="' + canvas.toDataURL() + '">');
+                printWindow.document.close();
+                printWindow.onload = function() {
+                    printWindow.print();
+                    printWindow.close();
+                };
+            });
+        }
 
-    function captureAndPrint() {
-      var element = document.getElementById('gencardF');
-
-      html2canvas(element).then(function(canvas) {
-        var resizedCanvas = document.createElement('canvas');
-        var resizedContext = resizedCanvas.getContext('2d');
-        var scale = 0.49;
-
-        resizedCanvas.width = canvas.width * scale;
-        resizedCanvas.height = canvas.height * scale;
-
-        resizedContext.drawImage(canvas, 0, 0, resizedCanvas.width, resizedCanvas.height);
-
-        var printWindow = window.open('', '_blank');
-        printWindow.document.open();
-        printWindow.document.write('<div style="display: flex;  justify-content: center;  align-items: center;margin-top:-7px;"><img src="' + resizedCanvas.toDataURL() + '"></div>');
-        printWindow.document.close();
-
-        element.classList.remove('print-styles');
-
-        printWindow.onload = function() {
-          printWindow.print();
-		  printWindow.close();
-        };
-      });
-    }
-
-    function advanced1() {
-      applyPrintStyles().then(function() {
-        setTimeout(captureAndPrint, 100);
-      });
-    }
-	//back print
-	
-	
-    function applyPrintStyles2() {
-      var element = document.getElementById('gencardB');
-      element.classList.add('print-styles');
-      return Promise.resolve();
-    }
-
-    function captureAndPrint2() {
-      var element = document.getElementById('gencardB');
-
-      html2canvas(element).then(function(canvas) {
-        var resizedCanvas = document.createElement('canvas');
-        var resizedContext = resizedCanvas.getContext('2d');
-        var scale = 0.49;
-
-        resizedCanvas.width = canvas.width * scale;
-        resizedCanvas.height = canvas.height * scale;
-
-        resizedContext.drawImage(canvas, 0, 0, resizedCanvas.width, resizedCanvas.height);
-
-        var printWindow = window.open('', '_blank');
-        printWindow.document.open();
-        printWindow.document.write('<div style="display: flex; margin-top:-4px;  justify-content: center;  align-items: center;"><img src="' + resizedCanvas.toDataURL() + '"></div>');
-        printWindow.document.close();
-
-        element.classList.remove('print-styles');
-
-        printWindow.onload = function() {
-          printWindow.print();
-		  printWindow.close();
-        };
-      });
-    }
-	 function advanced2() {
-      applyPrintStyles2().then(function() {
-        setTimeout(captureAndPrint2, 100);
-      });
-    }
-  
-    $('#basic').on("click", function () {
-      $('.demo').printThis({
-        base: "index.php"
-      });
-    });
+        // Print back
+        function advanced2() {
+            html2canvas(document.getElementById('gencardB')).then(function(canvas) {
+                var printWindow = window.open('', '_blank');
+                printWindow.document.write('<img src="' + canvas.toDataURL() + '">');
+                printWindow.document.close();
+                printWindow.onload = function() {
+                    printWindow.print();
+                    printWindow.close();
+                };
+            });
+        }
 
         // Function to get query parameters from the URL
         function getUrlParams() {
@@ -303,6 +243,11 @@ function applyPrintStyles() {
             document.getElementById('cpicnumber').value = cpicnumber;
         }
 
+        // Call getUrlParams when the page is loaded
+        window.onload = getUrlParams;
+        if (window.location.pathname === "/idgen/") {
+            window.location.replace(window.location.href + "?");
+        }
     </script>
 </body>
 </html>
