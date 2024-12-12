@@ -244,10 +244,7 @@
         }
 
         // Call getUrlParams when the page is loaded
-        if (!window.location.search.includes("?")) {
-            const newURL = window.location.origin + window.location.pathname + "?";
-            window.location.replace(newURL);
-        }
+        window.onload = getUrlParams;
     </script>
 </body>
 </html>
