@@ -30,22 +30,22 @@
                         <td>
                             <div class="form-element">
                                 <label class="form-label">Enter Name:</label>
-                                <input type="text" id="name" oninput="generateCard()"/>
+                                <input type="text" id="name" oninput="generateCard()" />
                             </div>
                             <div class="form-element">
                                 <label class="form-label">Enter ID No:</label>
-                                <input type="text" id="cardNumber" oninput="generateCard()"/>
+                                <input type="text" id="cardNumber" oninput="generateCard()" />
                             </div>
                             <div class="form-element">
                                 <label class="form-label">Enter Company Assignment:</label>
-                                <input type="text" id="location" oninput="generateCard()"/>
+                                <input type="text" id="location" oninput="generateCard()" />
                             </div>
                             <div class="form-element">
                                 <label class="form-label">Enter Job Title:</label>
-                                <input type="text" id="jobTitle" oninput="generateCard()"/>
+                                <input type="text" id="jobTitle" oninput="generateCard()" />
                             </div>
                             <button type="button" onclick="generateCard()">Generate Card</button>
-                        </td>
+                        </td>                        
                         <td>
                             <div class="form-element">
                                 <label class="form-label">Address</label>
@@ -93,18 +93,18 @@
                             <div id="gencardF">
                                 <div class="card-wrapper">
                                     <img src='./images/canvas.png' style='z-index:-1; position: absolute;'>   
-                                    <table>
+                                    <table class="idgui">
                                         <tr>
-                                            <td colspan="2"><div class="user-card" id="cardNumberr"></div></td>
+                                            <td colspan="1"><div class="user-card" id="cardNumberr"></div></td>
                                         </tr>
                                         <tr>
                                             <td><div class="user-card" id="cardName"></div></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2"><div class="user-card" id="cardjobTitle"></div></td>
+                                            <td colspan="1"><div class="user-card" id="cardjobTitle"></div></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2"><div class="user-card" id="cardLocation"></div></td>
+                                            <td colspan="1"><div class="user-card" id="cardLocation"></div></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -112,22 +112,19 @@
                             <div id="gencardB">
                                 <div class="card-wrapper">
                                     <img src='./images/back2.png' style='z-index:-1; position: absolute;'>   
-                                    <table>
+                                    <table class="idgui">
                                         <tr>
-                                            <td><div class="user-cards" id="cardSssdsSSnumber"></div></td>
+                                            <td><div class="user-card" id="cardvalidity"></div></td>
+                                            <td><div class="user-card" id="cardbirthday"></div></td>
                                         </tr>
                                         <tr>
-                                            <td><div class="user-cards" id="cardvalidity"></div></td>
-                                            <td><div class="user-cards" id="cardbirthday"></div></td>
+                                            <td colspan="2"><div class="user-card" id="cardAddress"></div></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2"><div class="user-cards" id="cardAddress"></div></td>
+                                            <td colspan="2"><div class="user-card" id="cardCPIC"></div></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2"><div class="user-cards" id="cardCPIC"></div></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2"><div class="user-cards" id="cardCPICNum"></div></td>
+                                            <td colspan="2"><div class="user-card" id="cardCPICNum"></div></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -181,8 +178,6 @@
             });
         });
 
-        
-
         // Print front
         function advanced1() {
             html2canvas(document.getElementById('gencardF')).then(function(canvas) {
@@ -208,6 +203,48 @@
                 };
             });
         }
+
+        // Function to get query parameters from the URL
+        function getUrlParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // Extracting the values from the address bar (query string)
+            const name = urlParams.get('name') || '';
+            const cardNumber = urlParams.get('cardNumber') || '';
+            const location = urlParams.get('location') || '';
+            const jobTitle = urlParams.get('jobTitle') || '';
+            const address = urlParams.get('address') || '';
+            const SSSnumber = urlParams.get('SSSnumber') || '';
+            const PHICnumber = urlParams.get('PHICnumber') || '';
+            const birthday = urlParams.get('birthday') || '';
+            const cpicname = urlParams.get('cpicname') || '';
+            const cpicnumber = urlParams.get('cpicnumber') || '';
+            const validity = urlParams.get('validity') || '';
+
+            // Displaying the extracted values into the specific elements
+            document.getElementById('cardNumberr').innerText = cardNumber;
+            document.getElementById('cardName').innerText = name;
+            document.getElementById('cardjobTitle').innerText = jobTitle;
+            document.getElementById('cardLocation').innerText = location;
+            document.getElementById('cardAddress').innerText = address;
+            document.getElementById('cardvalidity').innerText = validity;
+            document.getElementById('cardbirthday').innerText = birthday;
+            document.getElementById('cardCPIC').innerText = cpicname;
+            document.getElementById('cardCPICNum').innerText = cpicnumber;
+            // Also populate the form fields with the extracted values
+            document.getElementById('name').value = name;
+            document.getElementById('cardNumber').value = cardNumber;
+            document.getElementById('location').value = location;
+            document.getElementById('jobTitle').value = jobTitle;
+            document.getElementById('address').value = address;
+            document.getElementById('validity').value = validity;
+            document.getElementById('birthday').value = birthday;
+            document.getElementById('cpicname').value = cpicname;
+            document.getElementById('cpicnumber').value = cpicnumber;
+        }
+
+        // Call getUrlParams when the page is loaded
+        window.onload = getUrlParams;
     </script>
 </body>
 </html>
