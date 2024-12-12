@@ -69,6 +69,10 @@
     align-items: center;
     justify-content: center;
   }
+  .card-wrapper:first-child {
+    margin-right: 10px; /* Adjust the value to control the spacing */
+}
+
 
   #cardNumberr {
     width: 165px;
@@ -149,9 +153,6 @@
     width: 434px; /* Ensure the table takes up the full width available */
   }
 
-  #gencardB {
-    margin-left: 10px; /* Adjust this value as needed */
-}
   
 
   .user-card{
