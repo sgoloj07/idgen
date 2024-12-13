@@ -88,23 +88,23 @@
     margin-top: 35px;
     margin-bottom: 0px;
     padding-bottom: 0px;
-    left: 10px; /* Set its left position directly instead of margin-left */
+    left: 14px; /* Set its left position directly instead of margin-left */
   }
   #cardjobTitle {
     width: 400px;
     height: 45px;
-    margin-top: 15px;
+    margin-top: 22px;
     margin-bottom: 0px;
     padding-bottom: 0px;
-    left: 10px; /* Set its left position directly instead of margin-left */
+    left: 14px; /* Set its left position directly instead of margin-left */
   }
   #cardLocation {
     width: 400px;
     height: 56px;
-    margin-top: 25px;
+    margin-top: 20px;
     margin-bottom: 0px;
     padding-bottom: 0px;
-    left: 10px; /* Set its left position directly instead of margin-left */
+    left: 14px; /* Set its left position directly instead of margin-left */
   }
   #cardAddress {
     width: 390px;
